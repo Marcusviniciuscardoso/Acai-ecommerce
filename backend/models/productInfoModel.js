@@ -1,5 +1,4 @@
 const connection = require('./connection')
-
 const getProductInfo = async (idProduct) =>{
     try {
         console.log("Oi")
@@ -18,4 +17,19 @@ const getProductInfo = async (idProduct) =>{
     }
 }
 
-module.exports = {getProductInfo}
+const getAllProductInfo = async () =>{
+    try{
+        const query = `
+          SELECT * 
+          FROM product `
+
+          const getAllProductInfo = await connection.query(query)
+          console.log("Olha as linhas dos getproductsInfo", getAllProductInfo.row)
+          return getAllProductInfo.rows
+    }
+    catch(error){
+        console.error('Error after selecting product: ', error)
+    }
+}
+
+module.exports = {getProductInfo, getAllProductInfo}

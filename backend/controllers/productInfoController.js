@@ -7,4 +7,9 @@ const getProductInfo = async(req, res) =>{
     return res.status(200).json(productInfo)
 }
 
-module.exports = {getProductInfo}
+const getAllProductInfo = async(req, res) =>{
+    const getAllProductInfo = await productInfoModel.getAllProductInfo()
+    return res.status(200).json(getAllProductInfo)
+}
+
+module.exports = {getProductInfo, getAllProductInfo}
